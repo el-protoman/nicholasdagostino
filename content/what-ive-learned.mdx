@@ -1,0 +1,34 @@
+---
+title: 'Web Developer - What I''ve Learned from my Projects'
+publishedAt: '2023-03-26'
+summary: 'This is a summary on my work on projects so far.'
+---
+
+RPA - Monitoring Dashboard
++ This was my first experience working on a full-stack application in a work envrionment. We built a monitoring dashboard that pulled rpa application data from a database and integrated it with graphql to display as tables in the frontend. The frontend was built with React and NextJS.
++ Succesfully setup CI/CD for the first time from a mono repo
++ Deployed Dev/Prod versions of the app to Azure resources
++ Setup multiple database connections with TypeORM
++ Lifted state for some of the components to have cleaner code
++ Challenges included setting timezone for the dashboard since the resource and data were in different locations, conditionally rendering some of the table rows with css based on the value inside, having up to date metrics summary tiles based on the filtering of the table (we passed the state for visibleData)
+
+Site under construction / HTML Tips
++ This was my first experience at deploying an html Site
++ Cheatsheet for different html, git, and js tips I've picked up along the way
+
+SkiVlog v1
++ After learning how to create React apps I decided to build a personal site to display some of my videos from a ski trip
++ I integrated a map with the api of Mapbox
++ Setup routing with react router
++ Included animations using react motion, spring, etc
++ Displayed videos using iframes and Youtube links
++ Challenges included having the mapbox map render correctly
+
+Business Template
++ Used a bootstrap template to create an example business site
++ Testing different CSS options and use of flexbox, Media Rules, and general design with variables
+
+SveltKit Chatbot
++ Connected to openai api for chat completion and response from LLM
++ Setup demo SveltKit application with backend and frontend
++ chatbot is a generative chatbot that predicts the statistical probability of a answer to a user prompted question or response
