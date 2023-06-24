@@ -10,6 +10,13 @@ export default function ProjectsPage() {
     const links = [
         {
             imageUrl: 'site1.png',
+            siteUrl: 'https://ai-code-translator-neon-one.vercel.app/',
+            title: 'NextJS - OpenAI Code Translator',
+            description: 'NextJS app powered by OpenAI', href: "https://ai-code-translator-neon-one.vercel.app/", classes: ["nextjs", "React"]
+
+        },
+        {
+            imageUrl: 'site1.png',
             siteUrl: 'https://svelte-chat-dusky.vercel.app/',
             title: 'Svelte OpenAI Chat App',
             description: 'Chat app powered by OpenAI', href: "https://svelte-chat-dusky.vercel.app/", classes: ["sveltekit", "typescript", "html/css"]
