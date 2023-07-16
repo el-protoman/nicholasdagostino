@@ -5,9 +5,15 @@ import Counter from './Counter';
 import FilterableList from "./Site-Tags"
 
 export default function ProjectsPage() {
-    const [tags, setTags] = useState(['React', 'NextJS', 'TypeScript', "HTML/CSS", "Bootstrap", "Sveltekit", "TailwindCSS", "MaterialUI", "Ant-d"]);
+    const [tags, setTags] = useState(['React', 'NextJS', 'TypeScript', "HTML/CSS", "Bootstrap", "Sveltekit", "TailwindCSS", "MaterialUI", "Ant-d", "Python"]);
 
     const links = [
+        {
+            imageUrl: 'musk-gpt-deployed.png',
+            siteUrl: 'https://npacts-dev.vercel.app/',
+            title: 'NextJS - Mindsdb Twitter Bot',
+            description: 'NextJS app powered by Mindsdb Flask backend', href: "https://npacts-dev.vercel.app/", classes: ["nextjs", "Python"]
+        },
         {
             imageUrl: 'site1.png',
             siteUrl: 'https://ai-code-translator-neon-one.vercel.app/',
