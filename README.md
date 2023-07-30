@@ -3,11 +3,11 @@
 # nicholasdagostino.co
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Database**: [PlanetScale](https://planetscale.com)
+- **Database**: []
 - **Authentication**: [NextAuth.js](https://next-auth.js.org)
-- **Deployment**: [Vercel](https://vercel.com)
+- **Deployment**: [AWS Amplify]
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
+- **Analytics**: []
 
 
 ## Running Locally

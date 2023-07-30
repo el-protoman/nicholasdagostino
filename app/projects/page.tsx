@@ -23,6 +23,12 @@ export default function ProjectsPage() {
         },
         {
             imageUrl: 'site1.png',
+            siteUrl: 'https://mealmetrics-copilot-pied.vercel.app/',
+            title: 'OPENAI - Meal Prompter',
+            description: 'NextJS Chat app powered by GPT3 built with Express and Github Copilot',
+        }
+        {
+            imageUrl: 'site1.png',
             siteUrl: 'https://svelte-chat-dusky.vercel.app/',
             title: 'Svelte OpenAI Chat App',
             description: 'Chat app powered by OpenAI', href: "https://svelte-chat-dusky.vercel.app/", classes: ["sveltekit", "typescript", "html/css"]

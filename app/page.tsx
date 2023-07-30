@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getBlogViews, getTweetCount, getStarCount } from 'lib/metrics';
+import { getTweetCount, getStarCount } from 'lib/metrics';
 import {
   ArrowIcon,
   GitHubIcon,
@@ -8,16 +8,16 @@ import {
   ViewsIcon,
 } from 'components/icons';
 import { name, about, bio, avatar } from 'lib/info';
+import { Tweet } from 'react-tweet';
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  let starCount, views, tweetCount;
+  // let starCount, views, tweetCount;
+  let tweetCount
 
   try {
-    [starCount, views, tweetCount] = await Promise.all([
-      getStarCount(),
-      getBlogViews(),
+    [tweetCount] = await Promise.all([
       getTweetCount(),
     ]);
   } catch (error) {
@@ -56,17 +56,21 @@ export default async function HomePage() {
             className="flex items-center gap-2"
           >
             <GitHubIcon />
-            {`${starCount ? starCount.toLocaleString() : '0'} stars on this repo`}
+            {/* {`${starCount ? starCount.toLocaleString() : '0'} stars on this repo`} */}
           </a>
-          <Link href="/blog" className="flex items-center">
+          {/* <Link href="/blog" className="flex items-center">
             <ViewsIcon />
             {`${views ? views.toLocaleString() : '0'} blog views all time`}
-          </Link>
+          </Link> */}
         </div>
       </div>
       <p className="my-5 max-w-[600px] text-neutral-800 dark:text-neutral-200">
         {bio()}
       </p>
+      <Tweet id='1639696937464070145' />
+      <Tweet id='1681479073770663936' />
+      <Tweet id='1678922685017907202' />
+      <Tweet id='1679303558527688706' />
       <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-500 dark:text-neutral-400">
         <li>
           <a
