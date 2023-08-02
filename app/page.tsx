@@ -58,6 +58,15 @@ export default async function HomePage() {
             <GitHubIcon />
             {/* {`${starCount ? starCount.toLocaleString() : '0'} stars on this repo`} */}
           </a>
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/el-protoman"
+            className="flex items-center gap-2"
+          >
+            <GitHubIcon />
+          </a>
+
           {/* <Link href="/blog" className="flex items-center">
             <ViewsIcon />
             {`${views ? views.toLocaleString() : '0'} blog views all time`}

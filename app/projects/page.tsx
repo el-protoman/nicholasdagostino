@@ -25,8 +25,8 @@ export default function ProjectsPage() {
             imageUrl: 'site1.png',
             siteUrl: 'https://mealmetrics-copilot-pied.vercel.app/',
             title: 'OPENAI - Meal Prompter',
-            description: 'NextJS Chat app powered by GPT3 built with Express and Github Copilot',
-        }
+            description: 'NextJS Chat app powered by GPT3 built with Express and Github Copilot', classes: ["nextjs", "React", "MaterialUI"]
+        },
         {
             imageUrl: 'site1.png',
             siteUrl: 'https://svelte-chat-dusky.vercel.app/',
