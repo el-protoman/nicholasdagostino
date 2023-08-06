@@ -5,14 +5,14 @@ import Counter from './Counter';
 import FilterableList from "./Site-Tags"
 
 export default function ProjectsPage() {
-    const [tags, setTags] = useState(['React', 'NextJS', 'TypeScript', "HTML/CSS", "Bootstrap", "Sveltekit", "TailwindCSS", "MaterialUI", "Ant-d", "Python"]);
+    const [tags, setTags] = useState(['React', 'NextJS', 'TypeScript', "HTML/CSS", "Bootstrap", "Sveltekit", "TailwindCSS", "MaterialUI", "Ant-d", "Python", "langchain"]);
 
     const links = [
         {
             imageUrl: 'musk-gpt-deployed.png',
             siteUrl: 'https://npacts-dev.vercel.app/',
             title: 'NextJS - Mindsdb Twitter Bot',
-            description: 'NextJS app powered by Mindsdb Flask backend', href: "https://npacts-dev.vercel.app/", classes: ["nextjs", "Python"]
+            description: 'NextJS app powered by Mindsdb Flask backend', href: "https://npacts-dev.vercel.app/", classes: ["nextjs", "Python", "langchain"]
         },
         {
             imageUrl: 'site1.png',
@@ -25,7 +25,7 @@ export default function ProjectsPage() {
             imageUrl: 'site1.png',
             siteUrl: 'https://mealmetrics-copilot-pied.vercel.app/',
             title: 'OPENAI - Meal Prompter',
-            description: 'NextJS Chat app powered by GPT3 built with Express and Github Copilot', classes: ["nextjs", "React", "MaterialUI"]
+            description: 'NextJS Chat app powered by GPT3 built with Express and Github Copilot',
         },
         {
             imageUrl: 'site1.png',
@@ -59,10 +59,13 @@ export default function ProjectsPage() {
             description: 'Your videos from Youtube hosted on Github Pages', href: "https://dev-mon-app.azurewebsites.net/", classes: ["react", "nextjs", "typescript", "html/css"]
         },
     ];
-
     const filteredLinks = links.filter((link) => {
-        return tags.some((tag) => link.classes.includes(tag.toLowerCase()));
+        return link.classes !== undefined && tags.some((tag) => link.classes.includes(tag.toLowerCase()));
     });
+
+    // const filteredLinks = links.filter((link) => {
+    //     return tags.some((tag) => link.classes.includes(tag.toLowerCase()));
+    // });
 
     return (
         <>
@@ -75,10 +78,11 @@ export default function ProjectsPage() {
                 <Counter />
                 <FilterableList tags={tags} setTags={setTags} />
                 {filteredLinks.map((link) => (
-                    <h1 className={link.classes.join(' ')} key={link.href}>
+                    <h1 className={link.classes?.join(' ')} key={link.href}>
                         <a href={link.href}>{link.title}</a>
                     </h1>
                 ))}
+
             </section>
             <section>
                 <div>

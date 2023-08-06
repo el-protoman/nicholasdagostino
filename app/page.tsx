@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getTweetCount, getStarCount } from 'lib/metrics';
+import { getTweets, getUserInfo } from 'lib/metrics';
 import {
   ArrowIcon,
   GitHubIcon,
@@ -14,85 +14,99 @@ export const revalidate = 60;
 
 export default async function HomePage() {
   // let starCount, views, tweetCount;
-  let tweetCount
+  let handle = "nahgostino";
+  const getUserInfoDetail = await getUserInfo(handle);
+  if (getUserInfoDetail) {
+    const tweetCount = getUserInfoDetail.tweets;
+    const userId = getUserInfoDetail.rest_id;
+    const tweetDetails = await getTweets(userId);
+    let rest_ids: string[] = [];
+    for (let i = 0; i < tweetDetails.length; i++) {
+      const itemContent = tweetDetails[i].content.itemContent;
+      if (itemContent && itemContent.tweet_results) {
+        const tweetContent = itemContent.tweet_results.result;
+        rest_ids.push(tweetContent.rest_id);
+      }
+    }
 
-  try {
-    [tweetCount] = await Promise.all([
-      getTweetCount(),
-    ]);
-  } catch (error) {
-    console.error(error);
-  }
+    const tweetElements = rest_ids.map((rest_id) => <Tweet key={rest_id} id={rest_id} />);
+    // try {
+    //   [tweetCount] = await Promise.all([
+    //     getTweetCount(),
+    //   ]);
+    // } catch (error) {
+    //   console.error(error);
+    // }
 
-  return (
-    <section>
-      <h1 className="font-bold text-3xl font-serif">{name}</h1>
-      <p className="my-5 max-w-[460px] text-neutral-800 dark:text-neutral-200">
-        {about()}
-      </p>
-      <div className="flex items-start md:items-center my-8 flex-col md:flex-row">
-        <Image
-          alt={name}
-          className="rounded-full grayscale"
-          src={avatar}
-          placeholder="blur"
-          width={100}
-          priority
-        />
-        <div className="mt-8 md:mt-0 ml-0 md:ml-6 space-y-2 text-neutral-500 dark:text-neutral-400">
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://twitter.com/nahgostino"
-            className="flex items-center gap-2"
-          >
-            <TwitterIcon />
-            {`${tweetCount ? tweetCount.toLocaleString() : '0'} tweets all time`}
-          </a>
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/nicholasdagostino"
-            className="flex items-center gap-2"
-          >
-            <GitHubIcon />
-            {/* {`${starCount ? starCount.toLocaleString() : '0'} stars on this repo`} */}
-          </a>
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/el-protoman"
-            className="flex items-center gap-2"
-          >
-            <GitHubIcon />
-          </a>
-
-          {/* <Link href="/blog" className="flex items-center">
+    return (
+      <section>
+        <h1 className="font-bold text-3xl font-serif">{name}</h1>
+        <p className="my-5 max-w-[460px] text-neutral-800 dark:text-neutral-200">
+          {about()}
+        </p>
+        <div className="flex items-start md:items-center my-8 flex-col md:flex-row">
+          <Image
+            alt={name}
+            className="rounded-full grayscale"
+            src={avatar}
+            placeholder="blur"
+            width={100}
+            priority
+          />
+          <div className="mt-8 md:mt-0 ml-0 md:ml-6 space-y-2 text-neutral-500 dark:text-neutral-400">
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://twitter.com/nahgostino"
+              className="flex items-center gap-2"
+            >
+              <TwitterIcon />
+              {`${tweetCount ? tweetCount.toLocaleString() : '0'} tweets all time`}
+            </a>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/nicholasdagostino"
+              className="flex items-center gap-2"
+            >
+              <GitHubIcon />
+              {/* {`${starCount ? starCount.toLocaleString() : '0'} stars on this repo`} */}
+            </a>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/el-protoman"
+              className="flex items-center gap-2"
+            >
+              <GitHubIcon />
+            </a>
+            {/* <Link href="/blog" className="flex items-center">
             <ViewsIcon />
             {`${views ? views.toLocaleString() : '0'} blog views all time`}
           </Link> */}
+          </div>
         </div>
-      </div>
-      <p className="my-5 max-w-[600px] text-neutral-800 dark:text-neutral-200">
-        {bio()}
-      </p>
-      <Tweet id='1639696937464070145' />
-      <Tweet id='1681479073770663936' />
-      <Tweet id='1678922685017907202' />
-      <Tweet id='1679303558527688706' />
-      <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-500 dark:text-neutral-400">
-        <li>
-          <a
-            className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://twitter.com/nahgostino"
-          >
-            <ArrowIcon />
-            <p className="h-7">follow me on twitter</p>
-          </a>
-        </li>
-        {/* <li>
+        <p className="my-5 max-w-[600px] text-neutral-800 dark:text-neutral-200">
+          {bio()}
+        </p>
+        <Tweet id='1639696937464070145' />
+        <Tweet id='1681479073770663936' />
+        <Tweet id='1678922685017907202' />
+        <Tweet id='1679303558527688706' />
+        {tweetElements}
+        <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-500 dark:text-neutral-400">
+          <li>
+            <a
+              className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://twitter.com/nahgostino"
+            >
+              <ArrowIcon />
+              <p className="h-7">follow me on twitter</p>
+            </a>
+          </li>
+          {/* <li>
           <a
             className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"
             rel="noopener noreferrer"
@@ -103,7 +117,10 @@ export default async function HomePage() {
             <p className="h-7">get email updates</p>
           </a>
         </li> */}
-      </ul>
-    </section>
-  );
+        </ul>
+      </section>
+    );
+  } else {
+    return <div>Loading...</div>;
+  }
 }
