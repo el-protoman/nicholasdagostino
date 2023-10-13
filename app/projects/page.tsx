@@ -5,7 +5,7 @@ import Counter from './Counter';
 import FilterableList from "./Site-Tags"
 
 export default function ProjectsPage() {
-    const [tags, setTags] = useState(['React', 'NextJS', 'TypeScript', "HTML/CSS", "Bootstrap", "Sveltekit", "TailwindCSS", "MaterialUI", "Ant-d", "Python", "langchain"]);
+    const [tags, setTags] = useState(['React', 'NextJS', 'TypeScript', "HTML/CSS", "Bootstrap", "Sveltekit", "TailwindCSS", "MaterialUI", "Ant-d", "Python", "langchain", "AWS"]);
 
     const links = [
         {
@@ -53,11 +53,24 @@ export default function ProjectsPage() {
         },
         { href: "https://nicholasdagostino.github.io/", classes: ["html/css"] },
         {
+            imageUrl: 'site2.png',
+            siteUrl: 'https://jammming-dev.vercel.app/',
+            title: 'Spotify Playlist Creator',
+            description: 'Basic spotify playlist creator using implicit auth with Spotify API', href: 'https://jammming-dev.vercel.app/', classes: ["react", "nextjs", "MaterialUI"]
+        },
+
+        {
             imageUrl: 'site1.png',
             siteUrl: 'https://el-protoman.github.io/SkiVlog-App/',
             title: 'Ski/Adventure Vlog App',
             description: 'Your videos from Youtube hosted on Github Pages', href: "https://dev-mon-app.azurewebsites.net/", classes: ["react", "nextjs", "typescript", "html/css"]
         },
+        {
+            imageUrl: 'site1.png',
+            siteUrl: 'http://nickda-demo-s3.s3-website-us-east-1.amazonaws.com/',
+            title: 'I Love Coffee',
+            description: 'Static web site hosted by AWS', href: "http://nickda-demo-s3.s3-website-us-east-1.amazonaws.com/", classes: ["AWS", "html/css"]
+        }
     ];
     const filteredLinks = links.filter((link) => {
         return link.classes !== undefined && tags.some((tag) => link.classes.includes(tag.toLowerCase()));
