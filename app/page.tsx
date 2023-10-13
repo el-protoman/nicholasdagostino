@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getTweets, getUserInfo } from 'lib/metrics';
+// import {
+//   getTweets,
+//   getUserInfo 
+// } from 'lib/metrics';
 import {
   ArrowIcon,
   GitHubIcon,
@@ -15,21 +18,22 @@ export const revalidate = 60;
 export default async function HomePage() {
   // let starCount, views, tweetCount;
   let handle = "nahgostino";
-  const getUserInfoDetail = await getUserInfo(handle);
+  const getUserInfoDetail: any = {};
+  // const getUserInfoDetail = await getUserInfo(handle);
   if (getUserInfoDetail) {
-    const tweetCount = getUserInfoDetail.tweets;
-    const userId = getUserInfoDetail.rest_id;
-    const tweetDetails = await getTweets(userId);
+    //const tweetCount = getUserInfoDetail.tweets;
+    //const userId = getUserInfoDetail.rest_id;
+    // const tweetDetails = await getTweets(userId);
     let rest_ids: string[] = [];
-    for (let i = 0; i < tweetDetails.length; i++) {
-      const itemContent = tweetDetails[i].content.itemContent;
-      if (itemContent && itemContent.tweet_results) {
-        const tweetContent = itemContent.tweet_results.result;
-        rest_ids.push(tweetContent.rest_id);
-      }
-    }
+    // for (let i = 0; i < tweetDetails.length; i++) {
+    //   const itemContent = tweetDetails[i].content.itemContent;
+    //   if (itemContent && itemContent.tweet_results) {
+    //     const tweetContent = itemContent.tweet_results.result;
+    //     rest_ids.push(tweetContent.rest_id);
+    //   }
+    // }
 
-    const tweetElements = rest_ids.map((rest_id) => <Tweet key={rest_id} id={rest_id} />);
+    // const tweetElements = rest_ids.map((rest_id) => <Tweet key={rest_id} id={rest_id} />);
     // try {
     //   [tweetCount] = await Promise.all([
     //     getTweetCount(),
@@ -61,7 +65,7 @@ export default async function HomePage() {
               className="flex items-center gap-2"
             >
               <TwitterIcon />
-              {`${tweetCount ? tweetCount.toLocaleString() : '0'} tweets all time`}
+              {/* {`${tweetCount ? tweetCount.toLocaleString() : '0'} tweets all time`} */}
             </a>
             <a
               rel="noopener noreferrer"
@@ -89,11 +93,11 @@ export default async function HomePage() {
         <p className="my-5 max-w-[600px] text-neutral-800 dark:text-neutral-200">
           {bio()}
         </p>
-        <Tweet id='1639696937464070145' />
+        {/* <Tweet id='1639696937464070145' screen_name="Nahgostino"/>
         <Tweet id='1681479073770663936' />
         <Tweet id='1678922685017907202' />
-        <Tweet id='1679303558527688706' />
-        {tweetElements}
+        <Tweet id='1679303558527688706' /> */}
+        {/* {tweetElements} */}
         <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-500 dark:text-neutral-400">
           <li>
             <a
