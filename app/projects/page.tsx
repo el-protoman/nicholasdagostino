@@ -9,6 +9,12 @@ export default function ProjectsPage() {
 
     const links = [
         {
+            imageUrl: 'site1.png',
+            siteUrl: 'https://main.d2nrt77207ppib.amplifyapp.com/',
+            title: 'Codecademy Frontend capstone',
+            description: 'React-redux app, reddit minimalist app', href: 'https://main.d2nrt77207ppib.amplifyapp.com/', classes: ["React", "HTML/CSS", "MaterialUI"]
+        },
+        {
             imageUrl: 'musk-gpt-deployed.png',
             siteUrl: 'https://npacts-dev.vercel.app/',
             title: 'NextJS - Mindsdb Twitter Bot',
